@@ -60,6 +60,14 @@ class RecipeListViewModel extends ChangeNotifier {
     return list;
   }
 
+  List<RecipeModel> get displayedMyRecipes => displayedRecipes
+      .where((r) => r.createdBy.isNotEmpty && r.createdBy == _currentUid)
+      .toList();
+
+  List<RecipeModel> get displayedOtherRecipes => displayedRecipes
+      .where((r) => r.createdBy.isEmpty || r.createdBy != _currentUid)
+      .toList();
+
   List<RecipeModel> get favoriteRecipes =>
       _allRecipes.where((r) => r.isFavoritedBy(_currentUid)).toList();
 
