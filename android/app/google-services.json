@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1086355063575",
+    "project_id": "favfood-map",
+    "storage_bucket": "favfood-map.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086355063575:android:6536644690e1ba9d79ed52",
+        "android_client_info": {
+          "package_name": "com.example.favfood"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086355063575-7s1a59mh3sbvg6qaci92bbfrv32cg314.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCR-O8gXnRfRdwAGM5ALr3DjfMRgUmWo08"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086355063575-7s1a59mh3sbvg6qaci92bbfrv32cg314.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

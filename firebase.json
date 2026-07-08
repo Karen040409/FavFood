@@ -1,0 +1,32 @@
+{
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "storage": {
+    "rules": "storage.rules"
+  },
+  "flutter": {
+    "platforms": {
+      "android": {
+        "default": {
+          "projectId": "favfood-map",
+          "appId": "1:1086355063575:android:6536644690e1ba9d79ed52",
+          "fileOutput": "android/app/google-services.json"
+        }
+      },
+      "dart": {
+        "lib/firebase_options.dart": {
+          "projectId": "favfood-map",
+          "configurations": {
+            "android": "1:1086355063575:android:6536644690e1ba9d79ed52",
+            "ios": "1:1086355063575:ios:2e4cb8d5fb6fdc4779ed52",
+            "macos": "1:1086355063575:ios:2e4cb8d5fb6fdc4779ed52",
+            "web": "1:1086355063575:web:6d5da6253d3d0a1a79ed52",
+            "windows": "1:1086355063575:web:ec3f879bf9f1358979ed52"
+          }
+        }
+      }
+    }
+  }
+}
