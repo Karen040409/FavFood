@@ -6,6 +6,7 @@ import '../viewmodels/recipe_detail_view_model.dart';
 import '../viewmodels/recipe_list_view_model.dart';
 import '../widgets/empty_state.dart';
 import '../widgets/recipe_image.dart';
+import '../widgets/section_header.dart';
 import 'recipe_detail_screen.dart';
 import 'recipe_form_screen.dart';
 
@@ -148,9 +149,10 @@ class _RecipeListViewState extends State<_RecipeListView> {
       );
     }
 
-    final recipes = vm.displayedRecipes;
+    final myRecipes = vm.displayedMyRecipes;
+    final otherRecipes = vm.displayedOtherRecipes;
 
-    if (recipes.isEmpty) {
+    if (myRecipes.isEmpty && otherRecipes.isEmpty) {
       return const EmptyState(
         icon: Icons.search_off_rounded,
         title: 'No recipes found.',
@@ -158,16 +160,72 @@ class _RecipeListViewState extends State<_RecipeListView> {
       );
     }
 
-    return ListView.builder(
+    return ListView(
       padding: const EdgeInsets.fromLTRB(16, 8, 16, 100),
-      itemCount: recipes.length,
-      itemBuilder: (context, index) {
-        final recipe = recipes[index];
-        return _RecipeCard(
-          recipe: recipe,
-          onTap: () => openRecipeDetail(context, recipe),
-        );
-      },
+      children: [
+        if (myRecipes.isNotEmpty) ...[
+          SectionHeader(
+            title: 'My recipes',
+            subtitle:
+                '${myRecipes.length} recipe${myRecipes.length == 1 ? '' : 's'}',
+          ),
+          ...myRecipes.map(
+            (recipe) => _RecipeCard(
+              recipe: recipe,
+              onTap: () => openRecipeDetail(context, recipe),
+            ),
+          ),
+        ],
+        if (myRecipes.isNotEmpty && otherRecipes.isNotEmpty) ...[
+          const SizedBox(height: 4),
+          const _RecipeSectionDivider(label: 'Other recipes'),
+          const SizedBox(height: 4),
+        ],
+        if (otherRecipes.isNotEmpty) ...[
+          if (myRecipes.isEmpty)
+            SectionHeader(
+              title: 'Other recipes',
+              subtitle:
+                  '${otherRecipes.length} recipe${otherRecipes.length == 1 ? '' : 's'}',
+            ),
+          ...otherRecipes.map(
+            (recipe) => _RecipeCard(
+              recipe: recipe,
+              onTap: () => openRecipeDetail(context, recipe),
+            ),
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _RecipeSectionDivider extends StatelessWidget {
+  const _RecipeSectionDivider({required this.label});
+
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Row(
+      children: [
+        Expanded(child: Divider(color: colorScheme.outlineVariant)),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          child: Text(
+            label,
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.2,
+              color: colorScheme.onSurfaceVariant,
+            ),
+          ),
+        ),
+        Expanded(child: Divider(color: colorScheme.outlineVariant)),
+      ],
     );
   }
 }
