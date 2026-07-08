@@ -58,18 +58,6 @@ Enable **Firebase Storage** in the Firebase Console, then deploy rules:
 firebase deploy --only storage,firestore --project favfood-map
 ```
 
-## Web deploy (Vercel)
-
-Build and deploy from the project root:
-
-```powershell
-.\deploy-vercel.ps1
-```
-
-Or connect this GitHub repository to [Vercel](https://vercel.com) for automatic deploys on push.
-
-After deploying, add your Vercel domain to **Firebase Auth → Authorized domains**.
-
 ## Project structure
 
 ```
