@@ -1,6 +1,7 @@
 # FavFood
 
 **My Fav Food** is a Flutter recipe app with Firebase authentication, Firestore-backed recipes, favorites, and profile photo uploads. It also includes web deployment support via Vercel.
+Deployed link：https://fav-food-5p9ate0id-karen-voon-s-projects.vercel.app/
 
 ## Features
 
